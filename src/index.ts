@@ -1,9 +1,11 @@
 import { User } from "./models/User";
 
-const user = new User({ name: 'Sladjana', age: 41 });
+const user = new User({ id: 1 });
 
-user.on('change', () => {
+user.set({ name: 'NEW NAME', age: 9999 })
 
-})
+user.save();
 
-console.log(user);
+setTimeout(() => {
+    console.log(user)
+}, 4000);
