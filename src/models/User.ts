@@ -8,7 +8,7 @@ interface UserProperties {
 }
 
 export class User {
-    events: Eventing = new Eventing();
+    public events: Eventing = new Eventing();
 
     constructor(private data: UserProperties) { }
 
@@ -20,9 +20,12 @@ export class User {
         Object.assign(this.data, update);
     }
 
-    async fetch(): Promise<any> {
-        const res: AxiosResponse = await axios.get(`http://localhost:3000/users/${this.get('id')}`);
-        return this.set(res.data);
+    fetch(): void {
+        axios.get(`http://localhost:3000/users/${this.get('id')}`)
+            .then((response: AxiosResponse): void => {
+                this.set(response.data);
+            }
+        );
     }
 
     save(): void {
