@@ -10,14 +10,4 @@ interface UserProperties {
 export class User {
     public events: Eventing = new Eventing();
     public sync: Sync<UserProperties> = new Sync<UserProperties>();
-
-    constructor(private data: UserProperties) { }
-
-    get(propName: string): number | string {
-        return this.data[propName];
-    }
-
-    set(update: UserProperties): void {
-        Object.assign(this.data, update);
-    }
 }
