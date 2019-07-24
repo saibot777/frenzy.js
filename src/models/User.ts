@@ -1,6 +1,7 @@
 import { Eventing } from './Eventing';
+import { Sync } from './Sync';
 
-export interface UserProperties {
+interface UserProperties {
     id?: string | number;
     name?: string;
     age?: number;
@@ -8,6 +9,7 @@ export interface UserProperties {
 
 export class User {
     public events: Eventing = new Eventing();
+    public sync: Sync<UserProperties> = new Sync<UserProperties>();
 
     constructor(private data: UserProperties) { }
 

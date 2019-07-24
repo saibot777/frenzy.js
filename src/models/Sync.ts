@@ -2,7 +2,7 @@ import axios, { AxiosPromise } from 'axios';
 import { rootUrl } from '../consts';
 
 interface HasId {
-    id: number;
+    id?: string | number;
 }
 
 export class Sync<T extends HasId> {
