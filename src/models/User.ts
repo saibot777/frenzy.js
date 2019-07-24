@@ -46,4 +46,8 @@ export class User {
             this.set(response.data);
         });
     }
+
+    save(): void {
+        this.sync.save(this.attributes.getAll());
+    }
 }
