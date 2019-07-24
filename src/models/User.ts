@@ -1,6 +1,6 @@
 import { Eventing } from './Eventing';
 
-interface UserProperties {
+export interface UserProperties {
     id?: string | number;
     name?: string;
     age?: number;
