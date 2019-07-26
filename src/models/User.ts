@@ -1,20 +1,21 @@
-import { Eventing } from './Eventing';
-import { Sync } from './Sync';
+import { Model } from './Model';
 import { Attributes } from './Attributes';
-import { AxiosResponse } from 'axios';
+import { Eventing } from './Eventing';
+import { rootUrl } from '../consts/index';
+import { Sync } from './Sync';
 
 interface UserProperties {
-    id?: string | number;
+    id?: number;
     name?: string;
     age?: number;
 }
 
-export class User {
-    public events: Eventing = new Eventing();
-    public sync: Sync<UserProperties> = new Sync<UserProperties>();
-    public attributes: Attributes<UserProperties>;
-
-    constructor(attrs: UserProperties) {
-        this.attributes = new Attributes<UserProperties>(attrs);
+export class User extends Model<UserProperties> {
+    static buildUser(attrs: UserProperties): User {
+        return new User(
+            new Attributes<UserProperties>(attrs),
+            new Eventing(),
+            new Sync<UserProperties>(rootUrl)
+        )
     }
 }
