@@ -1,7 +1,7 @@
-import { User } from "../models/User";
+import { User, UserProperties } from '../models/User';
 import { View } from './View';
 
-export class UserForm extends View {
+export class UserForm extends View<User, UserProperties> {
 
     eventsMap(): { [key: string]: () => void } {
         return {
