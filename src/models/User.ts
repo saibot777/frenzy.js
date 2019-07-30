@@ -1,9 +1,10 @@
 import { Model } from './Model';
 import { Attributes } from './Attributes';
+import { ApiSync } from './ApiSync';
 import { Eventing } from './Eventing';
-import { rootUrl } from '../consts/index';
-import { Sync } from './Sync';
 import { Collection } from './Collection';
+import { UserProperties } from './User';
+import { rootUrl } from '../consts';
 
 export interface UserProperties {
     id?: number;
@@ -16,18 +17,18 @@ export class User extends Model<UserProperties> {
         return new User(
             new Attributes<UserProperties>(attrs),
             new Eventing(),
-            new Sync<UserProperties>(rootUrl)
-        )
-    }
-
-    static buildUserCollection(): Collection<User, UserProperties> {
-        return new Collection<User, UserProperties>(
-            rootUrl, (json: UserProperties) => User.buildUser(json)
+            new ApiSync<UserProperties>(rootUrl)
         );
     }
 
-    public setRandomAge(): void {
+    static buildUserCollection(): Collection<User, UserProperties> {
+        return new Collection<User, UserProperties>(rootUrl, (json: UserProperties) =>
+            User.buildUser(json)
+        );
+    }
+
+    setRandomAge(): void {
         const age = Math.round(Math.random() * 100);
-        this.set({ age })
+        this.set({ age });
     }
 }
