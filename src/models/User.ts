@@ -4,7 +4,7 @@ import { Eventing } from './Eventing';
 import { rootUrl } from '../consts/index';
 import { Sync } from './Sync';
 
-interface UserProperties {
+export interface UserProperties {
     id?: number;
     name?: string;
     age?: number;
