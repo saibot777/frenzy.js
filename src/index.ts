@@ -1,11 +1,6 @@
-import { User } from "./models/User";
+import { UserForm } from './views/UserForm';
+const userForm = new UserForm(
+    document.getElementById('root')
+);
 
-const user = new User({ id: 1 });
-
-user.set({ name: 'NEW NAME', age: 9999 })
-
-user.save();
-
-setTimeout(() => {
-    console.log(user)
-}, 4000);
+userForm.render();
