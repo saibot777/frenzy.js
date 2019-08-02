@@ -14,5 +14,9 @@
   "scripts": {
     "start:db": "json-server -w db.json",
     "start:parcel": "parcel index.html" 
+  },
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/saibot777/frenzy.js"
   }
 }
